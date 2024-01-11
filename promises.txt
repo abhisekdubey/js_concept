@@ -1,0 +1,23 @@
+Promises are a way to handle asynchronous operations in a more readable and manageable manner. They represent a value that might be available now, or in the future, or never. Promises have three states: pending, fulfilled, or rejected.
+
+*The Promise constructor takes a function with two parameters: resolve and reject.
+*Inside the function, you perform your asynchronous operation (e.g., fetching data from an API).
+*If the operation is successful, you call resolve with the result. If it fails, you call reject with an error.
+
+Then, you use the then method to handle the resolved case and the catch method to handle the rejected case.
+
+const delay = (milliseconds) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(`Operation completed after ${milliseconds}ms`);
+    }, milliseconds);
+  });
+};
+
+delay(2000)
+  .then((result) => {
+    console.log(result); // Output: Operation completed after 2000ms
+  })
+  .catch((error) => {
+    console.error(error); // This won't be executed in this example
+  });
